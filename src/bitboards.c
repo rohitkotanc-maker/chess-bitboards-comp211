@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
-/* a1 = bit 0, b1 = bit 1, ..., h8 = bit 63. */
+
 #define NOT_A_FILE  0xfefefefefefefefeULL
 #define NOT_H_FILE  0x7f7f7f7f7f7f7f7fULL
 #define NOT_AB_FILE 0xfcfcfcfcfcfcfcfcULL
@@ -22,7 +22,7 @@ static int parse_square(const char *name) {
 }
 
 static uint64_t knight_attacks(uint64_t knights) {
-    /* Filter destination files so a shift cannot wrap across a rank. */
+
     return ((knights << 17) & NOT_A_FILE) |
            ((knights << 15) & NOT_H_FILE) |
            ((knights << 10) & NOT_AB_FILE) |
@@ -66,13 +66,13 @@ int main(int argc, char **argv) {
     printf("Knight bitboard: 0x%016" PRIx64 "\n", knight);
     printf("Attack bitboard: 0x%016" PRIx64 "\n\n", attacks);
 
-    /* A separate example of changing the white-pawn bitboard. */
+
     uint64_t white_pawns = 0x000000000000ff00ULL;
     uint64_t e2 = square_mask(12);
     uint64_t e4 = square_mask(28);
     printf("White pawns before e2-e4: 0x%016" PRIx64 "\n", white_pawns);
-    white_pawns &= ~e2;  /* Clear e2 using AND and NOT. */
-    white_pawns |= e4;   /* Set e4 using OR. */
+    white_pawns &= ~e2; 
+    white_pawns |= e4; 
     printf("White pawns after  e2-e4: 0x%016" PRIx64 "\n", white_pawns);
 
     return 0;
