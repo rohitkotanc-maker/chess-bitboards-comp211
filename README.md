@@ -10,9 +10,9 @@ A chessboard has 64 squares and a bitboard represents a set of them using a 64-b
 
 ### 1. Representing Chess Pieces with Bits
 
-I started learning by understanding how squares from a chessboard correspond to each bit. The usual convention is having a1 at bit 0 and h8 at bit 63.
+I started learning by mapping the squares of a chessboard to the individual bits. Typically a1 is at bit 0 and h8 at bit 63.
 
-For instance, a white pawn on e2 can be represented in C with:
+For example, a white pawn on e2 can be represented as:
 
 ```c
 uint64_t pawn = 1ULL << 12;
