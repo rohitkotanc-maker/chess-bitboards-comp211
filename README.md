@@ -4,13 +4,13 @@
 
 For my Checkoff 3 project, I looked at how chess engines use bitwise operators to make chessboards and calculate attacks. I chose this as I wanted to see how different concepts in class are actually applied.
 
-A chessboard has 64 squares and a bitboard represents a set of them using a 64-bit integer ('uint64_t'). Each bit corresponds to a square, and a bit set to 1 means the square belongs to the set while a 0 indicates that it does not. Engines use multiple bitboards to represent difference piece types and colors.
+A chessboard has 64 squares and a bitboard represents a set of them using a 64-bit integer ('uint64_t'). Each bit corresponds to a square, and a bit set to 1 means the square belongs to the set while a 0 indicates that it does not. Engines use different bitboards to represent difference piece types and colors.
 
 ## What I Explored
 
 ### 1. Representing Chess Pieces with Bits
 
-I started by learning how chessboard squares correspond to individual bits. Using a common numbering convention, a1 is bit 0 and h8 is bit 63.
+I started learning by understanding how chessboard squares correspond to each bits. A common convention is having a1 at bit 0 and h8 at bit 63.
 
 For example, a white pawn on e2 can be represented in C with:
 
