@@ -2,7 +2,7 @@
 
 ## Overview
 
-For my Checkoff 3 project, I looked at how chess engines use bitwise operators to make chessboards and calculate attacks. I chose this as I wanted to see how different concepts in class are actually applied.
+For my project for Checkoff 3, I looked at how chess engines use bitwise operators to make chessboards and calculate move combinations with AI. I chose this as I wanted to see how different concepts in class are actually applied.
 
 A chessboard has 64 squares and a bitboard represents a set of them using a 64-bit integer ('uint64_t'). Each bit corresponds to a square, and a bit set to 1 means the square belongs to the set while a 0 indicates that it does not. Engines use different bitboards to represent difference piece types and colors.
 
@@ -10,15 +10,15 @@ A chessboard has 64 squares and a bitboard represents a set of them using a 64-b
 
 ### 1. Representing Chess Pieces with Bits
 
-I started learning by understanding how chessboard squares correspond to each bits. A common convention is having a1 at bit 0 and h8 at bit 63.
+I started learning by understanding how squares from a chessboard correspond to each bit. The usual convention is having a1 at bit 0 and h8 at bit 63.
 
-For example, a white pawn on e2 can be represented in C with:
+For instance, a white pawn on e2 can be represented in C with:
 
 ```c
 uint64_t pawn = 1ULL << 12;
 ```
 
-The left shift places a 1 at the bit corresponding to e2.
+The left shift put a 1 at the e2 bit.
 
 ### 2. Moving Pieces with Bitwise Operators
 
@@ -58,19 +58,20 @@ One question I had was how these magic numbers are selected. I learned that deve
 
 ## Bitboards vs. Arrays
 
-A traditional chessboard representation might use an array with 64 entries. This makes it straightforward to inspect an individual square.
+An array with 64 entries is the usual way to represent a chessboard. It makes it very easy to inspect a single square.
 
-Bitboards offer advantages when working with groups of squares. For example, bitwise AND can find overlapping positions, and OR can combine the locations of different piece types.
+Bitboards are especially useful for operations that work on groups of squares. For example, a bitwise AND of two bitboards can identify the squares that are in both. A bitwise OR can be used to add a bitboard of a different type.
 
-However, bitboards are not automatically faster for every operation. They can also be more complicated to implement, and some chess engines use a combination of arrays and bitboards.
+That being said, bitboards are not automatically quicker for everything. They can be more complex, and some chess engines use arrays plus bitboards.
+
 
 ## What I Learned
 
-My biggest takeaway was that bitwise operators can do much more than manipulate individual binary digits. They can also represent and process information about an entire set of chessboard squares.
+Bitwise operators are typically associated with changing individual bits, but they can also be used to represent squares on the board and perform operations on groups of squares.
 
-I was especially interested in how simple operations like AND, OR, and shifts could be extended to more advanced techniques like magic bitboards, combining binary arithmetic with precomputed data.
+It’s interesting to note how simple operations such as AND, OR, and shifting can be combined to perform many more complex operations like magic bitboards.
 
-This project helped me connect the material from COMP 211 to the design of real chess software.
+This helped me connect COMP 211 material to actual chess software design.
 
 ## Code Examples
 
