@@ -18,7 +18,7 @@ static uint64_t knight_attacks(uint64_t knights) {
            ((knights >>  6) & NOT_AB_FILE);
 }
 
-/* Independent reference: use file/rank arithmetic, not bit shifts. */
+
 static uint64_t expected_attacks(int square) {
     static const int df[8] = { 1, 2, 2, 1, -1, -2, -2, -1 };
     static const int dr[8] = { 2, 1, -1, -2, -2, -1, 1, 2 };
@@ -39,7 +39,7 @@ int main(void) {
     for (int square = 0; square < 64; ++square) {
         assert(knight_attacks(1ULL << square) == expected_attacks(square));
     }
-    /* a1 attacks b3 and c2, d4 attacks eight squares, h8 attacks f7 and g6. */
+
     assert(knight_attacks(1ULL << 0) == ((1ULL << 17) | (1ULL << 10)));
     assert(knight_attacks(1ULL << 63) == ((1ULL << 53) | (1ULL << 46)));
     assert(__builtin_popcountll(knight_attacks(1ULL << 27)) == 8);
